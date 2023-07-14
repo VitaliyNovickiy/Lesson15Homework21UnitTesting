@@ -4,10 +4,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMatrix {
+    private Matrix matrixUtils;
     private int[][] matrix;
 
     @BeforeEach
     void setUp() {
+        matrixUtils = new Matrix();
         matrix = new int[][] {
                 {1, 2, 3},
                 {4, 5, 6},
@@ -18,14 +20,14 @@ public class TestMatrix {
 
     @Test
     void testCalculateAverage() {
-        double average = Matrix.calculateAverage(matrix);
+        double average = matrixUtils.calculateAverage(matrix);
         assertEquals(5.0, average);
     }
 
 
     @Test
     void testIsSquareMatrix() {
-        boolean isSquare = Matrix.isSquareMatrix(matrix);
+        boolean isSquare = matrixUtils.isSquareMatrix(matrix);
         assertTrue(isSquare);
     }
 
@@ -33,16 +35,23 @@ public class TestMatrix {
     void testIsSquareMatrix_NonSquareMatrix() {
         int[][] nonSquareMatrix = new int[][] {
                 {1, 2, 3},
+                {4, 5},
                 {4, 5, 6}
         };
-        boolean isSquare = Matrix.isSquareMatrix(nonSquareMatrix);
+        boolean isSquare = matrixUtils.isSquareMatrix(nonSquareMatrix);
         assertFalse(isSquare);
     }
 
     @Test
     void testIsSquareMatrix_EmptyMatrix() {
         int[][] emptyMatrix = new int[0][0];
-        boolean isSquare = Matrix.isSquareMatrix(emptyMatrix);
+        boolean isSquare = matrixUtils.isSquareMatrix(emptyMatrix);
+        assertFalse(isSquare);
+    }
+    @Test
+    void testIsSquareMatrix_NullMatrix() {
+        int[][] nullMatrix = null;
+        boolean isSquare = matrixUtils.isSquareMatrix(nullMatrix);
         assertFalse(isSquare);
     }
 }

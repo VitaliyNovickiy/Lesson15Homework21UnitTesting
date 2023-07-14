@@ -1,5 +1,5 @@
 public class Matrix {
-    public static boolean isSquareMatrix(int[][] matrix) {
+    public boolean isSquareMatrix(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return false;
         }
@@ -20,7 +20,7 @@ public class Matrix {
 
         return true;
     }
-    public static double calculateAverage(int[][] matrix) {
+    public double calculateAverage(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             throw new IllegalArgumentException("Matrix must not be null or empty.");
         }
